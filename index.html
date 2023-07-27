@@ -16,7 +16,7 @@
     <!--Axios-->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 </head>
-<body>
+<br>
  <h1 class="AppName">Weather App</h1>   
   <div class="container">
     <br/>
@@ -26,24 +26,34 @@
         <input type="button" value="Search">
     </form>
     <br/>
-    <h1 class="city">Port Elizabeth</h1>
+    <h1 id="city">Port Elizabeth</h1>
     <div class="row">
             <div class="col-6">
-                <img src="https://ssl.gstatic.com/onebox/weather/64/rain_light.png" alt="Cloudy">
-                    19 ℃ | ℉
-            </div>
-            <div class="col-6">
                 <ul>
-                    <li>Friday</li><span>16:00</span>
-                    <li>Cloudy</li>
+                    <li>
+                        Friday , July 24                  
+                    </li>
+                    <li>
+                        16:00
+                    </li>
+                    <li id="description">
+                        Cloudy
+                    </li>
                 </ul>
             </div>
-        </div>
+                <div class="col-6">
+                <img src="https://ssl.gstatic.com/onebox/weather/64/rain_light.png" alt="Cloudy">
+                <strong id="temperature"></strong> 
+                <span id="units">℃ | ℉</span>
+                </div>
+                    <!--Link to github reprository-->
+                </br>
+                <small>
+                    <a href="http://github.com/Xoliiiii/WEATHER-APP" target="_blank">Open-sourced code</a> by Xoliiiii
+                </small>
     </div>
     </div>
-    <small>
-    <a href="http://github.com/Xoliiiii/WEATHER-APP" target="_blank">Open-sourced code</a> by Xoliiiii
-  </small> 
+    </div>
  </body>
 <script src="src/app.js"></script>
 </html>
