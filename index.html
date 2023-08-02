@@ -16,41 +16,36 @@
     <!--Axios-->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 </head>
-<br>
- <h1 class="AppName">Weather App</h1>   
-  <div class="container">
-    <br/>
+<br/>
+<h1 class="AppName">Weather App</h1>
+<div class="container">
+
     <div class="WeatherApp">
-    <form>
-        <input type="text" name="Enter city..." id="city-name">
-        <input type="button" value="Search">
-    </form>
-    <br/>
-    <h1 id="city">Port Elizabeth</h1>
-    <div class="row">
+        <form>
+            <input type="text" placeholder="Enter city..." id="city-name" width="100" autocomplete="off">
+            <input type="button" value="Search" class="btn btn-primary w-8-">
+        </form>
+        <br/>
+        <h1 id="city"></h1>
+        <div class="row">
             <div class="col-6">
                 <ul>
-                    <li id="date">
-                        Friday , July 24                  
-                    </li>
-                    <li id="description">
-                        Cloudy
-                    </li>
+                    <li id="date"></li>
+                    <li id="description"></li>
                 </ul>
             </div>
-                <div class="col-6">
-                <img src="https://ssl.gstatic.com/onebox/weather/64/rain_light.png" alt="Cloudy">
-                <strong id="temperature"></strong> 
-                <span id="units">℃ | ℉</span>
-                </div>
+            <div class="col-6">
+                <img src="" alt="Cloudy" id="icon">
+                <strong id="temperature"></strong>
+                <span id="units">℃</span>
+            </div>
                     <!--Link to github reprository-->
                 </br>
                 <small>
                     <a href="http://github.com/Xoliiiii/WEATHER-APP" target="_blank">Open-sourced code</a> by Xoliiiii
                 </small>
     </div>
-    </div>
-    </div>
+</div>
  </body>
 <script src="src/app.js"></script>
 </html>

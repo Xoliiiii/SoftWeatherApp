@@ -16,17 +16,20 @@ return `${day} ${hours}:${minutes}`;
 
 
 function displayTemperature(response){
+    console.log(response.data);
    let temperature = document.querySelector("#temperature");
    let city = document.querySelector("#city");
    let description = document.querySelector("#description");
    let date = document.querySelector("#date");
-   temperature.innerHTML= Math.round(response.data.main.temp);
-   city.innerHTML = response.data.name
-   description.innerHTML=response.data.weather[0].description;
-   date.innerHTML = formatDate(response.data.dt* 1000);
+   let icon = document.querySelector("#icon");
+   temperature.innerHTML= Math.round(response.data.temperature.current);
+   city.innerHTML = response.data.city
+   description.innerHTML=response.data.condition.description;
+   date.innerHTML = formatDate(response.data.time* 1000);
+   icon.setAttribute("src",`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`)
 }
-let apiKey = "7d5e99a2cfae1163cb682076044b282d";
-let city = "New York"
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+let apiKey = "de0bco366bc60bae2409dfb13a7t7749";
+let city = "Port Elizabeth"
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayTemperature);
