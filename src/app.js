@@ -59,13 +59,16 @@ axios.get(apiUrl).then(displayTemperature);
 }
 
 function displayTemperature(response){
+
+     celsiusTemp = response.data.temperature.current;
+
    let temperature = document.querySelector("#temperature");
    let city = document.querySelector("#city");
    let description = document.querySelector("#description");
    let date = document.querySelector("#date");
    let icon = document.querySelector("#icon");
 
-   temperature.innerHTML= Math.round(response.data.temperature.current);
+   temperature.innerHTML= Math.round(celsiusTemp);
    city.innerHTML = response.data.city;
    description.innerHTML=response.data.condition.description;
    date.innerHTML = formatDate(response.data.time* 1000);
@@ -87,6 +90,28 @@ function handleSubmit(event){
     cityInput.innerHTML = `${cityName.value}`;
     search(cityName.value);
 }
+
+function displayFahrenheitTemperature(event){
+    event.preventDefault();
+    let fahrenheit = (celsiusTemp*9)/5 + 32;
+    let tempConversion = document.querySelector("#temperature");
+    tempConversion.innerHTML = Math.round(fahrenheit);
+    }
+
+function displayCelsiusTemperature(event){
+    event.preventDefault();
+    let tempConversion = document.querySelector("#temperature");
+    tempConversion.innerHTML = celsiusTemp;
+}
+
+let celsiusTemp = null;
+
+let fahrenheit = document.querySelector("#fahrenheit-link");
+fahrenheit.addEventListener("click",displayFahrenheitTemperature);
+//let celsius= document.querySelector("#celsius-link");
+// celsius.addEventListener("click" , displayCelsiusTemperature);
+
+
 
 let form = document.querySelector ("#search-form");
 form.addEventListener("submit",handleSubmit);
