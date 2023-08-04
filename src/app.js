@@ -100,6 +100,7 @@ function displayFahrenheitTemperature(event){
 
 function displayCelsiusTemperature(event){
     event.preventDefault();
+    alert (celsiusTemp);
     let tempConversion = document.querySelector("#temperature");
     tempConversion.innerHTML = celsiusTemp;
 }
