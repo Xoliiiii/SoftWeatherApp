@@ -94,3 +94,65 @@ let form = document.querySelector ("#search-form");
 form.addEventListener("click",handleSubmit);
 
 search ("Port Elizabeth");
+
+
+
+
+//Adding geolocation feature 
+
+
+// JavaScript code to change the date and time according to user's input city
+
+// Function to get user's location based on input city
+function getLocationByCity() {
+  const city = document.getElementById("cityInput").value;
+  if (city.trim() === "") {
+    console.log("Please enter a valid city.");
+    return;
+  }
+
+  const geocodingApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey};`
+  const apiKey = "97e50472be43e73c48ca69e84a2d842e";
+
+  // Make API request to get the latitude and longitude of the city
+  fetch(`${geocodingApiUrl}?address=${city}&key=${apiKey}`)
+    .then(response => response.json())
+    .then(data => {
+      // Get the first result from the returned data
+      const result = data.results[0];
+      if (result) {
+        const latitude = result.geometry.location.lat;
+        const longitude = result.geometry.location.lng;
+
+        // Pass the latitude and longitude to the existing function to display date and time
+        showDateTime(latitude, longitude);
+      } else {
+        console.log("Could not retrieve location coordinates for the specified city.");
+      }
+    })
+    .catch(error => console.log("Error: " + error));
+}
+
+// Function to display date and time based on latitude and longitude
+function showDateTime(latitude, longitude) {
+  // Get current date and time based on user's location
+  const date = new Date();
+  date.setTimezoneOffset(getTimezoneOffset(latitude, longitude));
+  console.log("Current date and time: " + date);
+}
+
+// Function to get the timezone offset based on latitude and longitude
+function getTimezoneOffset(latitude, longitude) {
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+  const timestamp = Math.floor(Date.now() / 1000);
+
+  // Make API request to get the timezone data
+  fetch(`${apiUrl}?location=${latitude},${longitude}&timestamp=${timestamp}&key=97e50472be43e73c48ca69e84a2d842e`)
+    .then(response => response.json())
+    .then(data => {
+      // Get the timezone offset in minutes
+      const timezoneOffset = data.rawOffset / 60;
+      return timezoneOffset;
+    })
+    .catch(error => console.log("Error: " + error));
+}
