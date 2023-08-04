@@ -21,13 +21,13 @@
 <div class="container">
 
     <div class="WeatherApp">
-        <form id="search-form" class="mb-3">
+        <form class="mb-3">
             <div class="row">
                 <div class="col-9">
-            <input type="text" placeholder="Enter city..." class="form-control" id="city-name" width="100" autocomplete="off">
+            <input type="text" placeholder="Enter city..." class="form-control" id="city-name" width="100" autocomplete="off"/>
                 </div>
                 <div class="col-3">
-            <input type="button" value="Search" class="btn btn-primary w-100-">
+            <input type="button" value="Search" class="btn btn-primary w-100" id="search-form" />
                 </div>
         </div>
         </form>
@@ -42,14 +42,12 @@
             <div class="col-6" class="currentTemp">
                 <img src="" alt="Cloudy" id="icon" class="image">
                 <strong id="temperature"></strong>
-                <span id="units" class="units">
-                    <a href="#" class="celsius-link">℃</a>
-                </span> | <a href="#" id="fahrenheit-link">℉</a>
+                <span id="units" class="units">℃</span>
             </div>
                     <!--Link to github reprository-->
                 </br>
                 <small>
-                    <a href="http://github.com/Xoliiiii/WEATHER-APP" target="_blank">Open-sourced code</a> by Xoliiiii
+                    <a href="http://github.com/Xoliiiii/WEATHER-APP" target="_blank">Open-sourced code</a> by <a href="https://www.linkedin.com/in/xolisa-nunge-441b25264/" target="_blank" >Xolisa Nunge</a>
                 </small>
     </div>
     <div class="weather-forecast" id="forecast"></div>
