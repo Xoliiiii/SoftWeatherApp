@@ -14,42 +14,34 @@ let day = days[date.getDay()];
 return `${day} ${hours}:${minutes}`;
 }
 
-function formatDay(timestamp){
-    let date = new Date(timestamp*1000);
-    let day = date.getDay();
-    let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+// function formatDay(timestamp){
+    // let date = new Date(timestamp*1000);
+    // let day = date.getDay();
+    // let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
-    return days[day];
-}
+    // return days[day];
+// }
 
-function displayForecast(response){
-    let forecast = response.data.daily;
+function displayForecast(){
 
-    let forecastElement = document.querySelector("#forecast");
-    
-    let forecastHTML = `<div class="row">`;
-    forecast.foreach(function (forecast,index)
-    {
-        if(index<6) {
-            forecastHTML = forecastHTML +
-            `
-            <div class="col-2">
-            <div class='weather-forecast-date">${formatDay(forecastDay.dt)}</div>
-            <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png"
-            alt="" width="42"/>
-            <div class="weather-forecasttemperature">
-            <span class="weather-forecast-temperature-max">${Math.round(forecastDay.data.temperature)}°</span>
-            </div>
-            </div>
-            `;
+let forecastElement = document.querySelector ("#forecast");
+let forecastHTML = `<div class="row">`
 
-        }
-    });
-
-    forecastHTML = forecastHTML + `</div>`
-    forecastElement.innerHTML = forecastHTML;
+forecastHTML = forecastHTML + `                
+  <div class="row">
+                    <div class="col-2">
+                        <div class="weather-date">Thu</div>
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAepJREFUaN7tmd2thCAQhSnBEijBEmjgJpZgCZZgCZZgCXZwLcFX3yiBDlhIhhvC5dcdFzeB5LzsTtjz4cwwZomUknyzSANoAA2gATQANICSdZ4nA/Wk0ioGUGY7pVVJKElLXGl6NIAySMGojGh9MsCRMG80Pw5AmRozzRvppzVoGNCk068mwFYI4JPArpMSgB0BwGj5doAVutnsdDNdYwwVAH5o8rTNqzoyGsKIAqAvKETjRkNGQxC5BR8EuMm8vJCO0cKPAXBs83DyXcF9YmvKBoDHfIf5/o2DESUAM7L5HU6eez4fraFwzEwvYQo9BLDfcPrM2dek02jd1vZnOfuyEMCKaH52OwqMGaF04vBdDsQaApgQT546Jy9g/1gtcHgSqUxYQgD0xrwvgR9gn5D6WBtdEC6s6e55KQbQWd3hijqECVakxoq33okzXj03pFpiNQCOT4zfSYCf35MprUpHaBMrhltzlKwOoAx1SkJJgnqPeR3DrRhmXYZY6q8CLJaxP3NOzOzEjOSDKwigT9sxtnvM01RMTYDdMUc9AG5M/wgAnQaOsdljfnBiFlJh/QPwFK4u0C5RuMKNqQngFu7wtMJNAYhUUebE1ATYYoULAFvNwk0BmFuVZty8lFRe7S+mBtAAGkADeFsvKpKWeAy6FowAAAAASUVORK5CYII=" alt="" width="42px" class="forecast-image">
+                        <div class="weather-forecast-temperature">
+                            <span class="weather-forecast-temperature-max">18°</span>
+                            <span class="weather-forecast-temperature-min">12°</span>
+                        </div>
+                    </div>
+                </div>`
 
 }
+
+
 
 function getForecast (coordinates){
 let apiKey = "de0bco366bc60bae2409dfb13a7t7749";
@@ -94,7 +86,7 @@ let form = document.querySelector ("#search-form");
 form.addEventListener("click",handleSubmit);
 
 search ("Port Elizabeth");
-
+displayForecast();
 
 
 
