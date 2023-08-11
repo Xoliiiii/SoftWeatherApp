@@ -24,21 +24,21 @@ return `${day} ${hours}:${minutes}`;
 
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
 
-
-  let days = ["Wed", "Thu", "Fri" , "Sat","Sun"];
   let forecastHTML = ""; // Create an empty string to accumulate the HTML for all days
 
-  days.forEach(function(day) {
+  forecast.forEach(function(forecastDay) {
+    let maxTemp = Math.round(forecastDay.temperature.maximum);
+    let minTemp = Math.round(forecastDay.temperature.minimum);
     // Update the forecastHTML with the HTML for each day's forecast
     forecastHTML += 
       `<div class="col-2">
-        <div class="weather-date">${day}</div>
-        <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png" alt="" width="42px" class="forecast-image">
+        <div class="weather-date">${forecastDay.time}</div>
+        <img src= "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}" alt="" width="42px" class="forecast-image">
         <div class="weather-forecast-temperature">
-          <span class="weather-forecast-temperature-max"><strong>18°</strong></span>
-          <span class="weather-forecast-temperature-min">12°</span>
+          <span class="weather-forecast-temperature-max"><strong>${maxTemp}°</strong></span>
+          <span class="weather-forecast-temperature-min">${minTemp}°</span>
         </div>
       </div>`
     ;
