@@ -9,18 +9,18 @@ let minutes = date.getMinutes();
 if (minutes<10){
     minutes = `0${minutes}`;
 }
-let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday","Saturday"]
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" , "Saturday" ];
 let day = days[date.getDay()];
 return `${day} ${hours}:${minutes}`;
 }
 
-// function formatDay(timestamp){
-    // let date = new Date(timestamp*1000);
-    // let day = date.getDay();
-    // let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+function formatDay(timestamp){
+    let date = new Date(timestamp*1000);
+    let day = date.getDay();
+    let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
-    // return days[day];
-// }
+     return days[day];
+ }
 
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
@@ -28,20 +28,24 @@ function displayForecast(response) {
 
   let forecastHTML = ""; // Create an empty string to accumulate the HTML for all days
 
-  forecast.forEach(function(forecastDay) {
+  forecast.forEach(function(forecastDay ,index) {
+    if (index <6){
+
+  
     let maxTemp = Math.round(forecastDay.temperature.maximum);
     let minTemp = Math.round(forecastDay.temperature.minimum);
     // Update the forecastHTML with the HTML for each day's forecast
     forecastHTML += 
       `<div class="col-2">
-        <div class="weather-date">${forecastDay.time}</div>
-        <img src= "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}" alt="" width="42px" class="forecast-image">
+        <div class="weather-date">${formatDay(forecastDay.time)}</div>
+        <img src= "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png" alt="" width="42px" class="forecast-image">
         <div class="weather-forecast-temperature">
           <span class="weather-forecast-temperature-max"><strong>${maxTemp}°</strong></span>
           <span class="weather-forecast-temperature-min">${minTemp}°</span>
         </div>
       </div>`
     ;
+    }
   });
 
   forecastElement.innerHTML = forecastHTML;
