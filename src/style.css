@@ -54,6 +54,7 @@ img:temp-image{
 .forecast-weather{
     font-size:16px;
     text-align:center;
+    color: #ce6d88;
 }
 
 .forecast-weather-temperature{

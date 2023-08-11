@@ -48,12 +48,13 @@ function displayForecast() {
 displayForecast();
 
 
-function getForecast (coordinates){
-let apiKey = "de0bco366bc60bae2409dfb13a7t7749";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}`;
-
-axios.get(apiUrl).then(displayTemperature);
+function getForecast (longitude , latitude){
+console.log(longitude);
+console.log(latitude);
+let apiUrl = `https://api.shecodes.io/weather/v1/forecast?&lon${longitude}=lat=${latitude}&key=de0bco366bc60bae2409dfb13a7t7749&units=metric`;
+console.log(apiUrl);
 }
+
 
 function displayTemperature(response){
 
@@ -69,7 +70,8 @@ function displayTemperature(response){
    description.innerHTML=response.data.condition.description;
    date.innerHTML = formatDate(response.data.time* 1000);
    icon.setAttribute("src",`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`); 
-   getForecast(response.data.coordinates);
+   getForecast(response.data.coordinates.longitude);
+   getForecast(response.data.coordinates.latitude);
    
 }
 
