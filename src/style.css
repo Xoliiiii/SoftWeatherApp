@@ -1,5 +1,5 @@
 body{
-    font-family:sans-serif, Arial;
+font-family: 'IBM Plex Mono', monospace;
 }
 
 ul{
@@ -24,7 +24,8 @@ h1{
 
 small{
 
-            text-align: center;
+           position:relative;
+           left:500px;
             opacity: 0.6;
 }
 img:temp-image{
@@ -33,6 +34,16 @@ img:temp-image{
     bottom:10px;
 }
 
+.search-button {
+    background-color: hotpink;
+    border: 1px hotpink solid;
+    transition: all .3ms ease-in-out;
+}
+
+.btn-primary{
+    --bs-btn-hover-bg: #ce6d88;
+     --bs-btn-hover-border-color: #ce6d88;
+}
 
 .WeatherApp {
     max-width: 600px;
@@ -40,7 +51,13 @@ img:temp-image{
     margin: 0 auto;
     border: 1px solid pink;
     border-radius: 10px;
-    box-shadow: 5px 10px hotpink;
+    box-shadow: 5px 10px hotpink ;
+}
+
+.appName{
+    color:#ce6d88;
+    margin-bottom:20px;
+    text-align:center;
 }
 
 .weatherTemp{
@@ -72,6 +89,6 @@ img:temp-image{
 }
 
 #city-name{
-    width:300px
+    width: 380px;
 }
 
