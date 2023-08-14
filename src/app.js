@@ -86,16 +86,35 @@ function search(city){
     axios.get(apiUrl).then(displayTemperature);
 }
 
-function handleSubmit(event){
-    event.preventDefault();
-    let cityName = document.querySelector("#city-name");
-    let cityInput= document.querySelector("#city");
-    cityInput.innerHTML = `${cityName.value}`;
-    search(cityName.value);
+// function handleSubmit(event){
+//     event.preventDefault();
+//     let cityName = document.querySelector("#city-name");
+//     let cityInput= document.querySelector("#city");
+//     cityInput.innerHTML = `${cityName.value}`;
+//     search(cityName.value);
+// }
+
+// let form = document.querySelector ("#search-form");
+// form.addEventListener("click",handleSubmit);
+// form.addEventListener("enter",handleSubmit);
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityName = document.querySelector("#city-name");
+  let cityInput = document.querySelector("#city");
+  cityInput.innerHTML = `${cityName.value}`;
+  search(cityName.value);
 }
 
+let inputField = document.querySelector("#city-name");
+inputField.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    handleSubmit(event);
+  }
+});
+
 let form = document.querySelector ("#search-form");
-form.addEventListener("click",handleSubmit);
+form.addEventListener("click", handleSubmit);
 
 search ("Port Elizabeth");
 
